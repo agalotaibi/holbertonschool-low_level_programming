@@ -8,7 +8,7 @@
 
 int main(void)
 {
-char putC = '_putchar';
+char putC[8] = '_putchar';
 while (putC)
 {
 _putchar(putC);
