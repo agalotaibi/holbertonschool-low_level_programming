@@ -10,9 +10,10 @@
 int main(void)
 {
 char putC[8] = "_putchar";
-while (putC)
+int num;
+for (num = 0; num < 8; num++;)
 {
-_putchar(putC);
+_putchar(putC[num]);
 putC++;
 }
 _putchar('\n');
