@@ -11,10 +11,9 @@ int main(void)
 {
 char putC[8] = "_putchar";
 int num;
-for (num = 0; num < 8; num++;)
+for (num = 0; num < 8; num++)
 {
 _putchar(putC[num]);
-putC++;
 }
 _putchar('\n');
 return (0);
