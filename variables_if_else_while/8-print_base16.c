@@ -13,7 +13,7 @@ int num = 0;
 char aleph = 'a';
 while (num < 10)
 {
-putchar(num);
+putchar(num + '0');
 num++;
 }
 
