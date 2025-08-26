@@ -9,12 +9,12 @@
 int main(void)
 {
 char alph = 'a';
+char capAleph = 'A';
 while (alph <= 'z')
 {
 putchar(alph);
 alph++;
 }
-char capAleph = 'A';
 while (capAleph <= 'Z')
 {
 putchar(capAleph);
