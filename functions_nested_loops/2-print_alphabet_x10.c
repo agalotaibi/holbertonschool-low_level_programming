@@ -22,6 +22,5 @@ count++;
 
 
 _putchar('\n');
-return (0);
 
 }
