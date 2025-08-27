@@ -9,7 +9,7 @@ void print_alphabet_x10(void)
 {
 char alph = 'a';
 int count = 0;
-while (count <= 9)
+while (count <= 8)
 {
 while (alph <= 'z')
 {
