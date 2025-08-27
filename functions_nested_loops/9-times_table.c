@@ -32,6 +32,7 @@ _putchar((mult % 10) + '0');
 else
 {
 _putchar(mult + '0');
+_putchar(' ');
 
 
 }
