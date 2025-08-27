@@ -15,7 +15,7 @@ if (lastDig < 0)
 {
 lastDig *= -1;
 }
-
+_putchar(lastDig + '0');
 return (lastDig);
 
 }
