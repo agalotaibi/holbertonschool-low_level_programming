@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -17,7 +16,5 @@ alph++;
 }
 
 _putchar('\n');
-return (0);
-
 
 }
