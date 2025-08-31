@@ -20,7 +20,7 @@ _putchar('#');
 
 }
 
-if (high == size - 1);
+if (high == size - 1)
 {
 continue;
 _putchar('\n');
