@@ -32,7 +32,7 @@ printf("%d", num);
 }
 if (num < 100)
 {
-printf(" ")
+printf(" ");
 }
 num++;
 
