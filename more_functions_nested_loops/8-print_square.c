@@ -17,7 +17,7 @@ for (high = 0; high < size; high++)
 for (wid = 0; wid < size; size++)
 {
 _putchar('#');
-
+_putchar('\n');
 }
 
 if (high == size - 1)
