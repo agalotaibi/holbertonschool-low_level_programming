@@ -31,7 +31,7 @@ else
 printf("%d", num);
 }
 
-_putchar('\n');
+printf('\n');
 num++;
 
 }
