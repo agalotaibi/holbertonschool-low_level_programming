@@ -11,8 +11,8 @@
 
 int main(void)
 {
-int num;
-while (num >= 1 && num <= 100)
+int num = 1;
+while (num <= 100)
 {
 if ((num % 3 == 0) && (num % 5 == 0))
 {
@@ -30,12 +30,14 @@ else
 {
 printf("%d", num);
 }
-
-printf("\n");
+if (num < 100)
+{
+printf(" ")
+}
 num++;
 
 }
-
+printf("\n");
 return (0);
 
 }
