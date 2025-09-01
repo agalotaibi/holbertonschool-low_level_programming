@@ -4,28 +4,22 @@
 * print_square - Prints a squareusing the character #.
 * @size: The size of the square.
 */
-
 void print_square(int size)
 {
-int high;
-int wid;
+int hgt, wid;
 
 if (size > 0)
 {
-for (high = 0; high < size; high++)
+for (hgt = 0; hgt < size; hgt++)
 {
-for (wid = 0; wid < size; size++)
-{
+for (wid = 0; wid < size; wid++)
 _putchar('#');
-_putchar('\n');
-}
 
-if (high == size - 1)
-{
+if (hgt == size - 1)
 continue;
 _putchar('\n');
 }
 }
-}
+
 _putchar('\n');
 }
