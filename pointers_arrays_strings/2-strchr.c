@@ -1,0 +1,25 @@
+#include "main.h"
+
+/**
+* _strchr - search for specific char and returner the adress
+* if the char not founf retrun NULL
+* @s: the string that we look for the char in.
+* @c: the char that we want to look for.
+*
+* Return: the char in founded and NULL in it's not found.
+*/
+
+char *_strchr(char *s, char c)
+{
+
+while (*s != '\0')
+{
+if (*s == c)
+{
+return (s);
+}
+s++;
+}
+
+return (NULL);
+}
