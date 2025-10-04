@@ -4,7 +4,7 @@ This repository is focusing on solving Holberton School Low-level Programming Ta
 
 ## 📁 Project Structure:
 
- 1. ./hello_world - Hello world
+ 1. [Hello world](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/hello_world) 
  2. ./ariables_if_else_while - Variables, if, else, while
  3. ./functions_nested_loops - Functions, nested loops
  4. ./more_functions_nested_loops - More functions, more nested loops
