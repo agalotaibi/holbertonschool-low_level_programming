@@ -5,12 +5,18 @@ This repository is focusing on solving Holberton School Low-level Programming Ta
 ## 📁 Project Structure:
 
  1. [Hello world](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/hello_world) 
- 2. ./ariables_if_else_while - Variables, if, else, while
- 3. ./functions_nested_loops - Functions, nested loops
- 4. ./more_functions_nested_loops - More functions, more nested loops
- 5. ./pointers_arrays_strings - Pointers, arrays and strings
- 6. ./pointers_arrays_strings - More pointers, arrays and strings
- 7. ./recursion - Recursion
- 8. ./argc_argv - argc, argv
- 9. ./malloc_free - malloc, free
- 10. ./more_malloc_free - More malloc, free
+ 2. [Variables, if, else, while](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/variables_if_else_while) 
+ 3. [Functions, nested loops](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/functions_nested_loops) 
+ 4. [More functions, more nested loops](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/more_functions_nested_loops) 
+ 5. [Pointers, arrays and strings](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/pointers_arrays_strings) 
+ 6. [Recursion](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/recursion) 
+ 7. [argc, argv](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/argc_argv) 
+ 8. [malloc, free](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/malloc_free)
+ 9. [More malloc, free](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/more_malloc_free)
+ 10. [Structures, typedef](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/structures_typedef)
+ 11. [Function pointers](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/function_pointers)
+ 12. [Variadic functions](https://github.com/agalotaibi/holbertonschool-low_level_programming/tree/main/variadic_functions)
+
+
+## 👩🏻‍💻 Author:
+Amaal AlOtaibi
