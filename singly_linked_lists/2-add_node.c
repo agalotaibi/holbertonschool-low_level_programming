@@ -1,7 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
 #include <string.h>
-
 /**
 * add_node - Adds a new node at the beginning of a list_t list.
 * @head: A pointer to the pointer of the head of the list.
@@ -9,11 +8,10 @@
 *
 * Return: The address of the new element, or NULL if it failed.
 */
-
-
 list_t *add_node(list_t **head, const char *str)
 {
 list_t *new_node;
+unsigned int len = 0;
 
 new_node = malloc(sizeof(list_t));
 if (new_node == NULL)
@@ -26,7 +24,11 @@ free(new_node);
 return (NULL);
 }
 
-new_node->len = strlen(new_node->str);
+while (new_node->str[len] != '\0')
+{
+len++;
+}
+new_node->len = len;
 
 new_node->next = *head;
 
