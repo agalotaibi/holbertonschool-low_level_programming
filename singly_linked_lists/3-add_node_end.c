@@ -28,8 +28,10 @@ free(new_node);
 return (NULL);
 }
 
-while (new_node->str[len])
+while (new_node->str[len] != '\0')
+{
 len++;
+}
 new_node->len = len;
 new_node->next = NULL;
 
