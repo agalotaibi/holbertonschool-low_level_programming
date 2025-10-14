@@ -44,12 +44,11 @@ return (0);
 }
 
 /**
-* copy_content - Reads content from a source file and writes it to a
-* destination file in 1024-byte chunks.
-* @fd_from: The file descriptor of the source file.
-* @fd_to: The file descriptor of the destination file.
-* @file_from: The name of the source file (for error messages).
-* @file_to: The name of the destination file (for error messages).
+* copy_content - Reads from a source file and writes to a destination.
+* @fd_from: The source file descriptor.
+* @fd_to: The destination file descriptor.
+* @file_from: The name of the source file.
+* @file_to: The name of the destination file.
 */
 void copy_content(int fd_from, int fd_to, char *file_from, char *file_to)
 {
