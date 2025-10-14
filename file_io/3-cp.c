@@ -1,85 +1,102 @@
 #include "main.h"
 #include <fcntl.h>
 
-void close_fd(int fd);
-void copy_content(int fd_from, int fd_to, char *file_from, char *file_to);
+char *create_buffer(char *file);
+void close_file(int fd);
 
 /**
-* close_fd - Closes a file descriptor and handles errors.
-* @fd: The file descriptor to close.
+* create_buffer - Allocates 1024 bytes for a buffer.
+* @file: The name of the file buffer is storing chars for.
+*
+* Return: A pointer to the newly-allocated buffer.
 */
-void close_fd(int fd)
+char *create_buffer(char *file)
 {
-if (close(fd) == -1)
+char *buffer;
+
+buffer = malloc(sizeof(char) * 1024);
+
+if (buffer == NULL)
 {
-dprintf(2, "Error: Can't close fd %d\n", fd);
+dprintf(STDERR_FILENO,
+"Error: Can't write to %s\n", file);
+exit(99);
+}
+
+return (buffer);
+}
+
+/**
+* close_file - Closes file descriptors.
+* @fd: The file descriptor to be closed.
+*/
+void close_file(int fd)
+{
+int c;
+
+c = close(fd);
+
+if (c == -1)
+{
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 exit(100);
 }
 }
 
 /**
-* copy_content - Reads from one file and writes to another.
-* @fd_from: The source file descriptor.
-* @fd_to: The destination file descriptor.
-* @file_from: The name of the source file.
-* @file_to: The name of the destination file.
-*/
-void copy_content(int fd_from, int fd_to, char *file_from, char *file_to)
-{
-ssize_t bytes_read;
-char buffer[1024];
-
-while ((bytes_read = read(fd_from, buffer, 1024)) > 0)
-{
-if (write(fd_to, buffer, bytes_read) == -1)
-{
-dprintf(2, "Error: Can't write to %s\n", file_to);
-exit(99);
-}
-}
-
-if (bytes_read == -1)
-{
-dprintf(2, "Error: Can't read from file %s\n", file_from);
-exit(98);
-}
-}
-
-/**
-* main - Main function to copy a file.
-* @argc: The number of arguments.
-* @argv: An array of the arguments.
+* main - Copies the contents of a file to another file.
+* @argc: The number of arguments supplied to the program.
+* @argv: An array of pointers to the arguments.
 *
 * Return: 0 on success.
+*
+* Description: If the argument count is incorrect - exit code 97.
+*              If file_from does not exist or cannot be read - exit code 98.
+*              If file_to cannot be created or written to - exit code 99.
+*              If file_to or file_from cannot be closed - exit code 100.
 */
 int main(int argc, char *argv[])
 {
-int fd_from, fd_to;
+int from, to, r, w;
+char *buffer;
 
 if (argc != 3)
 {
-dprintf(2, "Usage: cp file_from file_to\n");
+dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 exit(97);
 }
 
-fd_from = open(argv[1], O_RDONLY);
-if (fd_from == -1)
+buffer = create_buffer(argv[2]);
+from = open(argv[1], O_RDONLY);
+r = read(from, buffer, 1024);
+to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+
+do {
+if (from == -1 || r == -1)
 {
-dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+dprintf(STDERR_FILENO,
+"Error: Can't read from file %s\n", argv[1]);
+free(buffer);
 exit(98);
 }
 
-fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-if (fd_to == -1)
+w = write(to, buffer, r);
+if (to == -1 || w == -1)
 {
-dprintf(2, "Error: Can't write to %s\n", argv[2]);
+dprintf(STDERR_FILENO,
+"Error: Can't write to %s\n", argv[2]);
+free(buffer);
 exit(99);
 }
 
-copy_content(fd_from, fd_to, argv[1], argv[2]);
+r = read(from, buffer, 1024);
+to = open(argv[2], O_WRONLY | O_APPEND);
 
-close_fd(fd_from);
-close_fd(fd_to);
+} while (r > 0);
+
+free(buffer);
+close_file(from);
+close_file(to);
 
 return (0);
 }
