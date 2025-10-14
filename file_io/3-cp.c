@@ -1,19 +1,60 @@
 #include "main.h"
 #include <fcntl.h>
 
+void close_fd(int fd);
+void copy_content(int fd_from, int fd_to, char *file_from, char *file_to);
+
 /**
-* main - Copies the content of one file to another.
-* @argc: The number of arguments supplied to the program.
-* @argv: An array of pointers to the arguments.
+* close_fd - Closes a file descriptor and handles errors.
+* @fd: The file descriptor to close.
+*/
+void close_fd(int fd)
+{
+if (close(fd) == -1)
+{
+dprintf(2, "Error: Can't close fd %d\n", fd);
+exit(100);
+}
+}
+
+/**
+* copy_content - Reads from one file and writes to another.
+* @fd_from: The source file descriptor.
+* @fd_to: The destination file descriptor.
+* @file_from: The name of the source file.
+* @file_to: The name of the destination file.
+*/
+void copy_content(int fd_from, int fd_to, char *file_from, char *file_to)
+{
+ssize_t bytes_read;
+char buffer[1024];
+
+while ((bytes_read = read(fd_from, buffer, 1024)) > 0)
+{
+if (write(fd_to, buffer, bytes_read) == -1)
+{
+dprintf(2, "Error: Can't write to %s\n", file_to);
+exit(99);
+}
+}
+
+if (bytes_read == -1)
+{
+dprintf(2, "Error: Can't read from file %s\n", file_from);
+exit(98);
+}
+}
+
+/**
+* main - Main function to copy a file.
+* @argc: The number of arguments.
+* @argv: An array of the arguments.
 *
 * Return: 0 on success.
 */
-
 int main(int argc, char *argv[])
 {
 int fd_from, fd_to;
-ssize_t bytes_read;
-char buffer[1024];
 
 if (argc != 3)
 {
@@ -35,32 +76,10 @@ dprintf(2, "Error: Can't write to %s\n", argv[2]);
 exit(99);
 }
 
-while ((bytes_read = read(fd_from, buffer, 1024)) > 0)
-{
-if (write(fd_to, buffer, bytes_read) == -1)
-{
-dprintf(2, "Error: Can't write to %s\n", argv[2]);
-exit(99);
-}
-}
+copy_content(fd_from, fd_to, argv[1], argv[2]);
 
-if (bytes_read == -1)
-{
-dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-exit(98);
-}
-
-if (close(fd_from) == -1)
-{
-dprintf(2, "Error: Can't close fd %d\n", fd_from);
-exit(100);
-}
-
-if (close(fd_to) == -1)
-{
-dprintf(2, "Error: Can't close fd %d\n", fd_to);
-exit(100);
-}
+close_fd(fd_from);
+close_fd(fd_to);
 
 return (0);
 }
